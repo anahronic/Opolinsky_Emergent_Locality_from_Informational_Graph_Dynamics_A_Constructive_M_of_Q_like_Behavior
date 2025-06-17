@@ -1,0 +1,1 @@
+# Opolinsky_Emergent_Locality_from_Informational_Graph_Dynamics_A_Constructive_M_of_Q_like_Behavior
