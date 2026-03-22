@@ -1,0 +1,33 @@
+================================================================================
+MODEL SELECTION: AIC & BIC
+Generated: 2026-02-19 21:31 UTC
+================================================================================
+
+  Definitions:
+    AIC = χ²_best + 2k
+    BIC = χ²_best + k·ln(N_data)
+    Lower is better. ΔAIC > 10 or ΔBIC > 10 = very strong evidence.
+
+  Inputs:
+    N_data (Planck TTTEEE+lowE+lowT) ≈ 2540
+    k_TIU  = 29  (6 cosmo + 2 TIU + 21 nuisance = 29 varied)
+    k_LCDM = 27  (6 cosmo + 21 nuisance = 27 varied)
+    χ²_best_TIU  = 1386.2600
+    χ²_best_LCDM = 1384.8000
+
+  Results:
+    Metric                  TIU           LCDM    Δ(TIU−LCDM)
+    ------------ -------------- -------------- --------------
+    AIC                 1444.26        1438.80          +5.46
+    BIC                 1613.62        1596.48         +17.14
+
+  Interpretation:
+    ΔAIC = +5.46: moderate evidence for LCDM.
+    ΔBIC = +17.14: very strong evidence for LCDM.
+
+  CAVEAT: AIC/BIC use χ²_best from chain, not true MLE.
+  BIC penalty ln(2540) = 7.840.
+  AIC does not penalise model complexity as strongly as BIC for large N.
+  k_TIU includes tiu_eta and tiu_tau as fixed parameters (not counted).
+
+================================================================================

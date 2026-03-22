@@ -1,0 +1,44 @@
+================================================================================
+PARAMETER CORRELATION STRUCTURE (matched budget = 379,673 per chain)
+Generated: 2026-02-19 21:31 UTC
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+TIU
+────────────────────────────────────────────────────────────────────────────────
+
+  Top-5 strongest absolute correlations:
+    # Param1                    Param2                        Corr
+  --- ------------------------- ------------------------- --------
+    1 omega_b                   YHe                        +1.0000
+    2 ln10^{10}A_s              A_s                        +0.9999
+    3 tau_reio                  z_reio                     +0.9973
+    4 Omega_Lambda              H0                         +0.9940
+    5 omega_cdm                 Omega_Lambda               -0.9899
+
+  Active parameters in correlation matrix: 35
+  Median |correlation|:  0.0194
+  Max |correlation|:     1.0000
+  Pairs with |r| > 0.5: 32
+  Pairs with |r| > 0.8: 14
+
+────────────────────────────────────────────────────────────────────────────────
+LCDM
+────────────────────────────────────────────────────────────────────────────────
+
+  Top-5 strongest absolute correlations:
+    # Param1                    Param2                        Corr
+  --- ------------------------- ------------------------- --------
+    1 omega_b                   YHe                        +1.0000
+    2 ln10^{10}A_s              A_s                        +0.9999
+    3 tau_reio                  z_reio                     +0.9972
+    4 Omega_Lambda              H0                         +0.9933
+    5 omega_cdm                 Omega_Lambda               -0.9884
+
+  Active parameters in correlation matrix: 33
+  Median |correlation|:  0.0554
+  Max |correlation|:     1.0000
+  Pairs with |r| > 0.5: 33
+  Pairs with |r| > 0.8: 13
+
+================================================================================

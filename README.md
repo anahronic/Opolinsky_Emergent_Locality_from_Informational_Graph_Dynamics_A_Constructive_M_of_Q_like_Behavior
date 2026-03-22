@@ -25,14 +25,29 @@ Simulations demonstrate:
 
 ## 📁 Repository Structure
 
-📦 Emergent-Locality/
-├── main.tex                  # LaTeX source of the paper  
-├── README.md                 # This file  
-├── README_Commercial_Use.txt # Terms for commercial use  
-├── LICENSE                   # CC BY-NC-SA 4.0 license  
-├── figures/                  # Simulation outputs (.png)  
-└── code/                     # Python code for simulations  
-    └── simulation.py
+```
+├── main.tex                            # LaTeX source of the graph dynamics paper
+├── Emergent_Locality_...pdf            # Compiled paper (Part I)
+├── Informational_Universe_EFT_Unified_Theory_4_0.pdf  # Full theory compilation (Parts I–III)
+├── Causal Effective Field Theory for Dark Energy with Coherence.pdf  # Part II standalone
+├── README.md                           # This file
+├── README_Commercial_Use.txt           # Terms for commercial use
+├── LICENSE.txt                         # CC BY-NC-SA 4.0 license
+├── Code/                               # Python simulation code (graph dynamics)
+├── figures/                            # Simulation output plots
+├── informational_DE_hiCLASS_v7.zip     # hi_CLASS dark energy module archive
+├── external_pkgs/                      # hi_CLASS addon: configs, source, scripts
+│   ├── README.md                       # Addon documentation
+│   ├── configs/                        # .ini / .param files for hi_CLASS & MontePython
+│   ├── src/                            # C source: idm_model.c/.h, PATCH_GUIDE.md
+│   ├── scripts/                        # Build & run scripts
+│   └── tools/                          # mu/gamma table generator
+└── Test TIU/                           # MCMC cosmological test results (Feb 2026)
+    ├── RESULTS_CONCLUSION.md           # Summary, interpretation, file guide
+    ├── mcmc/                           # Run metadata: log.param, bestfit, covmat, paramnames
+    ├── plots/                          # 1D & triangle posterior plots
+    └── analysis/                       # TIU vs ΛCDM comparison reports
+```
 
 ---
 
@@ -62,7 +77,32 @@ Edit the parameter set inside the script to explore different dimensionalities a
 
 ---
 
-## 🔒 License
+## � TIU Cosmological Test (Part II → Data)
+
+Part II of the unified theory paper proposes a **Causal Effective Field Theory for Dark Energy**
+with coherence length L_c and relaxation time τ_I. This EFT was implemented in
+[hi_CLASS](https://github.com/miguelzuma/hi_class_public) v3.2.3 and tested against
+**Planck 2018 TTTEEE + lowE + lowT** data using MontePython v3.6.1.
+
+### Production Run (Feb 2026)
+
+- **4 parallel MCMC chains, 1.7 million total steps, 390k accepted (22.8%)**
+- TIU parameters varied: `tiu_Lc` ∈ [0.5, 4.5], `tiu_beta` ∈ [0.0, 0.3]
+- TIU parameters fixed: `tiu_eta` = 0.1, `tiu_tau` = 153.0
+- Best-fit: −log L = 1386.26 (vs ΛCDM: 1384.80)
+- **Δχ² = +2.92** → comparable fit to ΛCDM
+- **ΔAIC = +5.46** → moderate evidence for ΛCDM
+- **ΔBIC = +17.14** → strong evidence for ΛCDM (complexity penalty)
+- All R̂ ≤ 1.05 ✓ (well converged)
+
+**Conclusion:** TIU is not excluded by Planck data, but the extra parameters are not
+justified by improved fit. Standard cosmological parameters (H₀, σ₈) remain consistent
+with Planck ΛCDM values. See [`Test TIU/RESULTS_CONCLUSION.md`](Test%20TIU/RESULTS_CONCLUSION.md)
+for the full analysis.
+
+---
+
+## �🔒 License
 
 This project is released under the  
 **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** license.  

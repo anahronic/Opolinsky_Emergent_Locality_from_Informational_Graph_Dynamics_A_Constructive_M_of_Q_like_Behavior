@@ -1,0 +1,35 @@
+
+# MontePython param file — Tight priors focused on proposed ranges
+
+data.experiments = [
+  'planck_2018_highl_TTTEEE',
+  'planck_2018_lowl_TT',
+  'planck_2018_lowl_EE',
+  'planck_2018_lensing',
+  'desi_dr1_bao',
+  'desi_dr1_fullshape'
+]
+
+path['cosmo'] = '/ABS/PATH/TO/hi_class'
+path['data']  = '/ABS/PATH/TO/montepython/data'
+root = 'chains/infDE_tight_'
+
+param['h']         = [0.674, 0.60, 0.76, 0.01, 0.01]
+param['omega_b']   = [0.0224,0.020,0.0245,0.0001,0.0001]
+param['omega_cdm'] = [0.120,  0.09,0.15,  0.001, 0.001]
+param['A_s']       = [2.1e-9,1.6e-9,3.0e-9,1e-11,1e-11,'log']
+param['n_s']       = [0.965,  0.92,1.02, 0.004, 0.004]
+param['tau_reio']  = [0.054,  0.02,0.09, 0.004, 0.004]
+
+# Tight priors around advocated ranges
+param['Lc_Mpch']   = [2.0,  1.0, 3.0, 0.05, 0.05]
+param['tau_Gyr']   = [0.3,  0.1, 1.0, 0.02, 0.02]
+param['betaI']     = [0.15, 0.0, 0.4, 0.01, 0.01]
+param['etaI']      = [0.10,-0.3, 0.3, 0.01, 0.01]
+param['cI']        = [1.0,  0.0, 1.0, 0.02, 0.02]
+param['idm_enable']= [1, 0, 1, 1, 1, 'fixed']
+
+cosmo_arguments={'output':'tCl,lCl,pCl,mPk,mTk',
+                 'lensing':'yes',
+                 'P_k_max_h/Mpc':'10.0',
+                 'idm_enable':'1'}

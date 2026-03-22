@@ -1,0 +1,153 @@
+================================================================================
+MATCHED-BUDGET TIU vs LCDM COMPARISON
+Generated: 2026-02-19 20:48 UTC
+Target   : 379,673 expanded samples per chain
+Rule     : min(sum_mult) over 4 TIU chains
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+COMPARABILITY DISCLAIMER
+────────────────────────────────────────────────────────────────────────────────
+
+  This report compares TIU and LCDM chains at MATCHED computational
+  budget: exactly 379,673 expanded samples (= sum of multiplicity
+  column) per chain. This is the only section where efficiency
+  comparisons (ESS, move_rate, τ_IAT) are methodologically valid.
+
+  The "Full-length context" section shows rate-based metrics
+  (move_rate, avg_mult, ESS_per_100k) for reference but does NOT
+  compare absolute ESS between runs of different length.
+
+  SAMPLING CONFIGURATION DIFFERENCE:
+    TIU  run: archive covmat + tuned jumping factor (near-optimal)
+    LCDM run: archive covmat (PD-fixed) + -f 1.5 (corrected restart)
+  Both runs now use a covmat. Remaining efficiency differences
+  reflect posterior geometry + proposal tuning, not a missing covmat.
+
+────────────────────────────────────────────────────────────────────────────────
+A. MATCHED-BUDGET CHAIN DETAIL (TARGET = 379,673 per chain)
+────────────────────────────────────────────────────────────────────────────────
+
+  TIU — matched files in chains/tiu_planck_prod2_20260216_000334/matched_379673/
+
+  File                                         Lines   Sum_Mult  Avg_Mult  Move_Rate  minESS
+  2026-02-17_400000__1_matched379673.txt      85,041    379,673      4.46    0.22398     222
+  2026-02-17_400000__2_matched379673.txt      85,273    379,673      4.45    0.22460     367
+  2026-02-17_400000__3_matched379673.txt      86,049    379,673      4.41    0.22664     193
+  2026-02-17_400000__4_matched379673.txt      85,253    379,673      4.45    0.22454     195
+  TOTAL/AGG                                  341,616  1,518,692      4.45    0.22494     977
+
+  LCDM — matched files in chains/lcdm_planck_prod_20260216_000334/matched_379673/
+
+  File                                         Lines   Sum_Mult  Avg_Mult  Move_Rate  minESS
+  2026-02-19_900000__1_matched379673.txt      82,080    379,673      4.63    0.21619      24
+  2026-02-19_900000__2_matched379673.txt      82,786    379,673      4.59    0.21805      20
+  2026-02-19_900000__3_matched379673.txt      80,376    379,673      4.72    0.21170      10
+  2026-02-19_900000__4_matched379673.txt      82,505    379,673      4.60    0.21731      12
+  TOTAL/AGG                                  327,747  1,518,692      4.63    0.21581      67
+
+────────────────────────────────────────────────────────────────────────────────
+B. MATCHED-BUDGET COMPARISON TABLE (TARGET = 379,673 per chain)
+────────────────────────────────────────────────────────────────────────────────
+
+  Metric                               TIU           LCDM   Ratio TIU/LCDM
+  ------------------------- -------------- -------------- ----------------
+  chains                                 4              4                 
+  budget/chain                     379,673        379,673            1.00×
+  lines_total                      341,616        327,747            1.04×
+  move_rate                        0.22494        0.21581            1.04×
+  avg_mult                            4.45           4.63            1.04×
+  min ESS (chain)                      193             10           18.38×
+  sum ESS (all ch.)                    977             67           14.49×
+  ESS_per_100k                        64.3            4.4           14.49×
+
+  sum ESS = sum of min_ess over independent chains.
+  ESS_per_100k = sum_ess / (total_budget / 100,000).
+  Ratio > 1 means TIU value is larger; for avg_mult ratio is inverted
+  (LCDM/TIU), so > 1 means LCDM multiplicity is higher (worse).
+
+────────────────────────────────────────────────────────────────────────────────
+C. FULL-LENGTH CONTEXT (rate-based only — do NOT compare absolute ESS)
+────────────────────────────────────────────────────────────────────────────────
+
+  These are rate-normalised metrics over each run's full chain length.
+  Absolute ESS differs because chain lengths differ; only ESS_per_100k
+  is comparable across runs of different length.
+
+  TIU:
+    Total lines:        343,926
+    Total sum_mult:   1,530,096
+    move_rate:          0.22477
+    avg_mult:              4.45
+    sum ESS:                990  (absolute — not for comparison)
+    ESS_per_100k:          64.7  (comparable)
+
+  LCDM:
+    Total lines:        372,266
+    Total sum_mult:   1,602,756
+    move_rate:          0.23227
+    avg_mult:              4.31
+    sum ESS:                 69  (absolute — not for comparison)
+    ESS_per_100k:           4.3  (comparable)
+
+  Rate metric                        TIU         LCDM   Ratio TIU/LCDM
+  ------------------------- ------------ ------------ ----------------
+  move_rate                      0.22477      0.23227            0.97×
+  avg_mult                          4.45         4.31            0.97×
+  ESS_per_100k                      64.7          4.3           15.07×
+
+────────────────────────────────────────────────────────────────────────────────
+D. PATHS & REPRO COMMANDS
+────────────────────────────────────────────────────────────────────────────────
+
+  Matched chain files:
+    TIU:  chains/tiu_planck_prod2_20260216_000334/matched_379673/
+    LCDM: chains/lcdm_planck_prod_20260216_000334/matched_379673/
+
+  REPRO — determine TARGET from TIU:
+    for f in chains/tiu_planck_prod2_20260216_000334/2026-02-17_400000__*.txt; do
+      awk '/^[[:space:]]*[0-9]/{s+=$1} END{print FILENAME, s}' "$f"
+    done
+
+  REPRO — trim chains:
+    python3 ~/reports/tools/trim_chain_by_mult.py \
+      --target 379673 --outdir chains/tiu_planck_prod2_20260216_000334/matched_379673 \
+      chains/tiu_planck_prod2_20260216_000334/2026-02-17_400000__*.txt
+
+    python3 ~/reports/tools/trim_chain_by_mult.py \
+      --target 379673 --outdir chains/lcdm_planck_prod_20260216_000334/matched_379673 \
+      chains/lcdm_planck_prod_20260216_000334/2026-02-19_900000__*.txt
+
+  REPRO — verify sum_mult:
+    for f in chains/tiu_planck_prod2_20260216_000334/matched_379673/*.txt chains/lcdm_planck_prod_20260216_000334/matched_379673/*.txt; do
+      awk '/^[[:space:]]*[0-9]/{s+=$1} END{print FILENAME, s}' "$f"
+    done
+    # Every file must show exactly 379673
+
+  REPRO — compute ESS on matched:
+    python3 ~/reports/compute_ess.py \
+      --json-out ~/reports/tiu_matched_ess.json \
+      chains/tiu_planck_prod2_20260216_000334/matched_379673/*.txt
+
+    python3 ~/reports/compute_ess.py \
+      --json-out ~/reports/lcdm_matched_ess.json \
+      chains/lcdm_planck_prod_20260216_000334/matched_379673/*.txt
+
+  REPRO — regenerate this report:
+    python3 ~/reports/tools/render_matched_section.py \
+      --tiu-glob 'chains/tiu_planck_prod2_20260216_000334/2026-02-17_400000__*.txt' \
+      --lcdm-glob 'chains/lcdm_planck_prod_20260216_000334/2026-02-19_900000__*.txt' \
+      --outdir /home/anahronic/reports
+
+────────────────────────────────────────────────────────────────────────────────
+E. JSON ARTEFACTS
+────────────────────────────────────────────────────────────────────────────────
+
+  TIU matched ESS:  /home/anahronic/reports/tiu_matched_ess.json
+  LCDM matched ESS: /home/anahronic/reports/lcdm_matched_ess.json
+
+================================================================================
+END OF REPORT  |  2026-02-19 20:48 UTC
+Budget: 379,673 per chain  |  Rule: min(sum_mult) over 4 TIU chains
+Every metric above is reproducible via commands in section D.
+================================================================================

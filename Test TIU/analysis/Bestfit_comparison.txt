@@ -1,0 +1,33 @@
+================================================================================
+BEST-FIT LIKELIHOOD COMPARISON
+Generated: 2026-02-19 21:31 UTC
+Source: matched chains (TARGET = 379,673 per chain)
+================================================================================
+
+  TIU:
+    χ²_best        = 1386.2600
+    -logL_best     = 693.1300
+    logL_best      = -693.1300
+    k (free params) = 29
+    Source file:     2026-02-17_400000__4_matched379673.txt
+    Line index:     81551
+
+  LCDM:
+    χ²_best        = 1384.8000
+    -logL_best     = 692.4000
+    logL_best      = -692.4000
+    k (free params) = 27
+    Source file:     2026-02-19_900000__2_matched379673.txt
+    Line index:     1
+
+  Δχ² (TIU − LCDM)  = 1.4600
+  ΔlogL             = -0.7300
+
+  Interpretation:
+    |Δχ²| = 1.46 < 2: models fit comparably.
+
+  CAVEAT: best-fit from MCMC chain ≠ true MLE.
+  Chain sampling may not have visited the exact mode.
+  For rigorous comparison, run a dedicated minimiser.
+
+================================================================================
