@@ -49,34 +49,6 @@ Simulations demonstrate:
     └── analysis/                       # TIU vs ΛCDM comparison reports
 ```
 
----
-
-## 🧪 Simulations
-
-The model is implemented in Python 3 using NumPy and Matplotlib.  
-Internal state dimensionality `d` can be set to:
-- `d=1`: Scalar states → domain separation  
-- `d=2`: SU(2)-like behavior → symmetry breaking into orthogonal clusters  
-- `d=3`: SU(3)-like behavior → stable particle-like entities
-
-### 🔧 Requirements
-
-- Python 3.8+  
-- `numpy`  
-- `matplotlib`
-
-### ▶️ Running the Simulation
-
-Navigate to the `code/` directory and run:
-
-```bash
-python3 simulation.py
-```
-
-Edit the parameter set inside the script to explore different dimensionalities and seed values.
-
----
-
 ## � TIU Cosmological Test (Part II → Data)
 
 Part II of the unified theory paper proposes a **Causal Effective Field Theory for Dark Energy**
